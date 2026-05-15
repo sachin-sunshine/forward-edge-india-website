@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forward Edge India LLP – Real Estate & Renting Solutions</title>
+  <meta name="description" content="Forward Edge India LLP – Premier real estate consultancy for buying, selling, renting, and property management across India.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #fff; overflow-x: hidden; }
+    .playfair { font-family: 'Playfair Display', serif; }
+
+    /* ── Animations ── */
+    @keyframes fadeInUp   { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes fadeInLeft { from { opacity:0; transform:translateX(-30px); } to { opacity:1; transform:translateX(0); } }
+    @keyframes fadeInRight{ from { opacity:0; transform:translateX(30px); }  to { opacity:1; transform:translateX(0); } }
+    @keyframes float      { 0%,100%{transform:translateY(0);}  50%{transform:translateY(-16px);} }
+    @keyframes blob       { 0%,100%{border-radius:60% 40% 30% 70%/60% 30% 70% 40%;} 50%{border-radius:30% 60% 70% 40%/50% 60% 30% 60%;} }
+    @keyframes marquee    { 0%{transform:translateX(0);} 100%{transform:translateX(-50%);} }
+    @keyframes shimmer    { 0%{background-position:0% 50%;} 50%{background-position:100% 50%;} 100%{background-position:0% 50%;} }
+    @keyframes countUp    { from{opacity:0;} to{opacity:1;} }
+    @keyframes spinSlow   { from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+
+    .anim-fade-up    { animation: fadeInUp   .8s ease forwards; }
+    .anim-fade-left  { animation: fadeInLeft  .8s ease forwards; }
+    .anim-fade-right { animation: fadeInRight .8s ease forwards; }
+    .anim-float      { animation: float  5s ease-in-out infinite; }
+    .anim-blob       { animation: blob  10s ease-in-out infinite; }
+    .anim-marquee    { animation: marquee 30s linear infinite; display:inline-flex; white-space:nowrap; }
+
+    /* ── Theme tokens ── */
+    .gradient-gold  { background: linear-gradient(135deg,#b8860b,#d4a017,#f0c040,#d4a017); background-size:200% 200%; animation: shimmer 4s ease infinite; }
+    .text-gold      { background: linear-gradient(135deg,#c9930a,#e8b830,#f5d060); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .text-gold-2    { background: linear-gradient(135deg,#d4a017,#f0c040); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .hero-bg        { background: linear-gradient(135deg,#0a0e1a 0%,#0d1b2e 35%,#091222 65%,#060d18 100%); }
+    .card-glass     { background:rgba(255,255,255,.06); backdrop-filter:blur(14px); border:1px solid rgba(255,255,255,.12); }
+    .card-hover     { transition: all .32s cubic-bezier(.4,0,.2,1); }
+    .card-hover:hover { transform: translateY(-9px); box-shadow: 0 28px 56px rgba(212,160,23,.18); }
+    .gold-border    { border-left: 4px solid #d4a017; }
+    .pill           { display:inline-block; border:1px solid rgba(212,160,23,.4); background:rgba(212,160,23,.08); border-radius:99px; padding:5px 16px; font-size:.8rem; font-weight:600; color:#e8c44a; }
+
+    /* ── Nav link underline ── */
+    .nav-link { position:relative; transition:color .2s; }
+    .nav-link::after { content:''; position:absolute; bottom:-3px; left:0; width:0; height:2px; background:#d4a017; transition:width .3s; }
+    .nav-link:hover::after { width:100%; }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width:6px; }
+    ::-webkit-scrollbar-track { background:#0a0e1a; }
+    ::-webkit-scrollbar-thumb { background:#d4a017; border-radius:3px; }
+
+    /* ── Input focus ── */
+    input:focus, select:focus, textarea:focus { outline:none; border-color:#d4a017 !important; box-shadow:0 0 0 3px rgba(212,160,23,.15); }
+    select option { background:#111827; color:#fff; }
+
+    /* ── Tab active ── */
+    .tab-active { background:linear-gradient(135deg,#d4a017,#f0c040); color:#0a0e1a; font-weight:700; }
+    .tab-inactive { background:rgba(255,255,255,.07); color:#9ca3af; }
+    .tab-inactive:hover { background:rgba(212,160,23,.15); color:#e8c44a; }
+
+    /* ── Feature icon ring ── */
+    .icon-ring { width:64px; height:64px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.6rem; background:rgba(212,160,23,.12); border:2px solid rgba(212,160,23,.3); transition:all .3s; }
+    .card-hover:hover .icon-ring { background:rgba(212,160,23,.25); border-color:#d4a017; transform:scale(1.1); }
+
+    @media (max-width:768px) {
+      .desktop-nav { display:none; }
+    }
+  </style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+const { useState, useEffect, useRef } = React;
+
+/* ── Intersection hook ── */
+function useVisible(threshold = 0.15) {
+  const ref = useRef(null);
+  const [v, setV] = useState(false);
+  useEffect(() => {
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setV(true); }, { threshold });
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, []);
+  return [ref, v];
+}
+
+/* ── Animated counter ── */
+function Counter({ to, suf = '', pre = '', dur = 2200 }) {
+  const [n, setN] = useState(0);
+  const [ref, v] = useVisible();
+  const started = useRef(false);
+  useEffect(() => {
+    if (!v || started.current) return;
+    started.current = true;
+    const t0 = performance.now();
+    const tick = (now) => {
+      const p = Math.min((now - t0) / dur, 1);
+      const e = 1 - Math.pow(1 - p, 3);
+      setN(Math.floor(e * to));
+      if (p < 1) requestAnimationFrame(tick); else setN(to);
+    };
+    requestAnimationFrame(tick);
+  }, [v, to, dur]);
+  return <span ref={ref}>{pre}{n.toLocaleString('en-IN')}{suf}</span>;
+}
+
+/* ── Navbar ── */
+function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+  useEffect(() => {
+    const h = () => setScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', h, { passive: true });
+    return () => window.removeEventListener('scroll', h);
+  }, []);
+  const links = ['Properties', 'Services', 'About', 'Contact'];
+  return (
+    <nav style={{
+      position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000,
+      background: scrolled ? 'rgba(10,14,26,.97)' : 'transparent',
+      backdropFilter: scrolled ? 'blur(18px)' : 'none',
+      borderBottom: scrolled ? '1px solid rgba(212,160,23,.2)' : '1px solid transparent',
+      transition: 'all .35s ease',
+    }}>
+      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '72px' }}>
+          {/* Logo */}
+          <a href="#" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <div style={{
+              width: '40px', height: '40px', borderRadius: '10px',
+              background: 'linear-gradient(135deg,#d4a017,#f0c040)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              fontSize: '18px', fontWeight: 900, color: '#0a0e1a', letterSpacing: '-1px',
+            }}>FE</div>
+            <div>
+              <div style={{ fontFamily:'Playfair Display,serif', fontSize:'1.25rem', fontWeight:700, color:'#fff', lineHeight:1 }}>Forward Edge</div>
+              <div style={{ fontSize:'.6rem', color:'#d4a017', fontWeight:700, letterSpacing:'.15em', textTransform:'uppercase' }}>India LLP</div>
+            </div>
+          </a>
+          {/* Desktop links */}
+          <div className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '36px' }}>
+            {links.map(l => (
+              <a key={l} href={`#${l.toLowerCase()}`} className="nav-link"
+                style={{ textDecoration: 'none', color: '#e5e7eb', fontSize: '.92rem', fontWeight: 500 }}>{l}</a>
+            ))}
+            <a href="#contact" style={{
+              background: 'linear-gradient(135deg,#d4a017,#f0c040)',
+              color: '#0a0e1a', padding: '10px 24px', borderRadius: '8px',
+              fontWeight: 700, fontSize: '.9rem', textDecoration: 'none',
+              transition: 'opacity .2s, transform .2s',
+            }} onMouseOver={e => e.currentTarget.style.opacity='.88'}
+               onMouseOut={e => e.currentTarget.style.opacity='1'}>Get Free Consultation</a>
+          </div>
+          {/* Hamburger */}
+          <button onClick={() => setOpen(o => !o)}
+            style={{ display: 'none', background: 'none', border: 'none', color: '#fff', fontSize: '1.6rem', cursor: 'pointer' }}
+            className="md:block" id="hamburger">☰</button>
+          <button onClick={() => setOpen(o => !o)}
+            style={{ background: 'none', border: 'none', color: '#fff', fontSize: '1.6rem', cursor: 'pointer' }}
+            className="md:hidden">☰</button>
+        </div>
+      </div>
+      {/* Mobile Menu */}
+      {open && (
+        <div style={{ background: '#0a0e1a', borderTop: '1px solid rgba(212,160,23,.2)' }}>
+          {links.map(l => (
+            <a key={l} href={`#${l.toLowerCase()}`} onClick={() => setOpen(false)}
+              style={{ display: 'block', padding: '16px 24px', color: '#e5e7eb', textDecoration: 'none',
+                borderBottom: '1px solid rgba(255,255,255,.06)', fontSize: '.95rem', fontWeight: 500 }}>{l}</a>
+          ))}
+          <div style={{ padding: '16px 24px' }}>
+            <a href="#contact" onClick={() => setOpen(false)} style={{
+              display: 'block', background: 'linear-gradient(135deg,#d4a017,#f0c040)',
+              color: '#0a0e1a', padding: '12px', borderRadius: '8px',
+              fontWeight: 700, textAlign: 'center', textDecoration: 'none',
+            }}>Get Free Consultation</a>
+          </div>
+        </div>
+      )}
+    </nav>
+  );
+}
+
+/* ── Hero ── */
+function Hero() {
+  return (
+    <section className="hero-bg" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
+      {/* Background blobs */}
+      <div className="anim-blob" style={{ position:'absolute', top:'-10%', right:'-5%', width:'600px', height:'600px', background:'radial-gradient(circle,rgba(212,160,23,.1),transparent 70%)', borderRadius:'60% 40% 30% 70%/60% 30% 70% 40%' }}></div>
+      <div className="anim-blob" style={{ position:'absolute', bottom:'-15%', left:'-8%', width:'500px', height:'500px', background:'radial-gradient(circle,rgba(212,160,23,.07),transparent 70%)', borderRadius:'40% 60% 70% 30%/50% 40% 60% 50%', animationDelay:'5s' }}></div>
+      {/* Dot grid overlay */}
+      <div style={{ position:'absolute', inset:0, backgroundImage:'radial-gradient(rgba(212,160,23,.12) 1px,transparent 1px)', backgroundSize:'36px 36px', pointerEvents:'none' }}></div>
+
+      <div style={{ maxWidth:'1280px', margin:'0 auto', padding:'0 24px', paddingTop:'120px', paddingBottom:'80px', position:'relative', zIndex:10 }}>
+        <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'64px', alignItems:'center' }}
+          className="grid-cols-1 md:grid-cols-2">
+          {/* Left */}
+          <div className="anim-fade-left">
+            <div style={{ display:'flex', flexWrap:'wrap', gap:'10px', marginBottom:'28px' }}>
+              <span className="pill">🏛️ Registered LLP</span>
+              <span className="pill">✅ Active & Compliant</span>
+              <span className="pill">🏢 Real Estate & Renting</span>
+            </div>
+            <h1 className="playfair" style={{ fontSize:'clamp(2.4rem,5vw,4rem)', fontWeight:700, color:'#fff', lineHeight:1.12, marginBottom:'20px' }}>
+              Your Edge in<br/>
+              <span className="text-gold">Real Estate</span><br/>
+              Investment
+            </h1>
+            <p style={{ color:'#94a3b8', fontSize:'1.1rem', lineHeight:1.8, maxWidth:'480px', marginBottom:'36px' }}>
+              Forward Edge India LLP is a premium real estate and renting consultancy — bridging serious investors, home buyers, and tenants with the finest properties across India.
+            </p>
+            <div style={{ display:'flex', flexWrap:'wrap', gap:'14px', marginBottom:'40px' }}>
+              <a href="#contact" style={{
+                background:'linear-gradient(135deg,#d4a017,#f0c040)',
+                color:'#0a0e1a', padding:'15px 32px', borderRadius:'10px',
+                fontWeight:800, fontSize:'1rem', textDecoration:'none',
+                boxShadow:'0 8px 32px rgba(212,160,23,.35)',
+                transition:'transform .2s, box-shadow .2s',
+              }} onMouseOver={e=>{e.currentTarget.style.transform='scale(1.04)';e.currentTarget.style.boxShadow='0 12px 40px rgba(212,160,23,.5)'}}
+                 onMouseOut={e=>{e.currentTarget.style.transform='scale(1)';e.currentTarget.style.boxShadow='0 8px 32px rgba(212,160,23,.35)'}}>
+                Schedule Consultation →
+              </a>
+              <a href="#properties" style={{
+                background:'rgba(255,255,255,.07)', border:'1.5px solid rgba(255,255,255,.2)',
+                color:'#fff', padding:'15px 32px', borderRadius:'10px',
+                fontWeight:700, fontSize:'1rem', textDecoration:'none',
+                transition:'background .2s',
+              }} onMouseOver={e=>e.currentTarget.style.background='rgba(255,255,255,.12)'}
+                 onMouseOut={e=>e.currentTarget.style.background='rgba(255,255,255,.07)'}>
+                Browse Properties
+              </a>
+            </div>
+            {/* Trust row */}
+            <div style={{ display:'flex', gap:'28px', flexWrap:'wrap' }}>
+              {[['🏆','Award Winning'],['🔒','Transparent Deals'],['⚡','Fast Closings']].map(([ic,t])=>(
+                <div key={t} style={{ display:'flex', alignItems:'center', gap:'8px' }}>
+                  <span style={{ fontSize:'1.4rem' }}>{ic}</span>
+                  <span style={{ color:'#94a3b8', fontSize:'.85rem', fontWeight:500 }}>{t}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          {/* Right – Floating card cluster */}
+          <div className="anim-fade-right" style={{ display:'flex', justifyContent:'center', alignItems:'center' }}>
+            <div className="anim-float" style={{ position:'relative' }}>
+              {/* Glow */}
+              <div style={{ position:'absolute', inset:'-20px', background:'radial-gradient(circle,rgba(212,160,23,.2),transparent 65%)', borderRadius:'50%', filter:'blur(20px)' }}></div>
+              {/* Main card */}
+              <div className="card-glass" style={{ borderRadius:'28px', padding:'36px 32px', textAlign:'center', minWidth:'280px' }}>
+                <div style={{ fontSize:'6rem', marginBottom:'12px' }}>🏙️</div>
+                <div className="playfair text-gold" style={{ fontSize:'1.6rem', fontWeight:700, marginBottom:'4px' }}>Forward Edge</div>
+                <div style={{ color:'#94a3b8', fontSize:'.85rem', marginBottom:'20px' }}>India LLP — Real Estate</div>
+                <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'12px' }}>
+                  {[['500+','Properties'],['12+','Yrs Exp'],['98%','Satisfaction'],['₹800Cr','Deals']].map(([v,l])=>(
+                    <div key={l} style={{ background:'rgba(212,160,23,.1)', borderRadius:'12px', padding:'12px 8px' }}>
+                      <div style={{ color:'#f0c040', fontWeight:800, fontSize:'1.1rem' }}>{v}</div>
+                      <div style={{ color:'#6b7280', fontSize:'.72rem', marginTop:'2px' }}>{l}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              {/* Floating badge 1 */}
+              <div style={{ position:'absolute', top:'-20px', right:'-30px', background:'linear-gradient(135deg,#d4a017,#f0c040)', borderRadius:'14px', padding:'10px 16px', boxShadow:'0 8px 24px rgba(212,160,23,.4)' }}>
+                <div style={{ color:'#0a0e1a', fontSize:'.75rem', fontWeight:700 }}>🏅 RERA Verified</div>
+              </div>
+              {/* Floating badge 2 */}
+              <div style={{ position:'absolute', bottom:'-20px', left:'-30px', background:'rgba(10,14,26,.9)', border:'1px solid rgba(212,160,23,.4)', borderRadius:'14px', padding:'10px 16px' }}>
+                <div style={{ color:'#e8c44a', fontSize:'.75rem', fontWeight:700 }}>🔑 Buy · Sell · Rent</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Marquee strip */}
+      <div style={{ background:'rgba(212,160,23,.08)', borderTop:'1px solid rgba(212,160,23,.2)', borderBottom:'1px solid rgba(212,160,23,.2)', overflow:'hidden', padding:'12px 0' }}>
+        <div className="anim-marquee">
+          {[...Array(2)].map((_, i) => (
+            <div key={i} style={{ display:'flex', alignItems:'center' }}>
+              {['🏠 Residential Properties','🏢 Commercial Spaces','🔑 Rental Management','📋 Legal Assistance','💰 Investment Advisory','🌍 Pan-India Network','✅ RERA Verified','🤝 500+ Happy Clients'].map(t => (
+                <span key={t} style={{ color:'#d4a017', fontWeight:600, fontSize:'.88rem', padding:'0 32px', borderRight:'1px solid rgba(212,160,23,.25)' }}>{t}</span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── Stats ── */
+function Stats() {
+  const items = [
+    { to:500, suf:'+', label:'Properties Listed', icon:'🏠' },
+    { to:380, suf:'+', label:'Deals Closed', icon:'🤝' },
+    { to:12, suf:'+', label:'Years Experience', icon:'📅' },
+    { to:800, pre:'₹', suf:'Cr+', label:'Transaction Value', icon:'💰' },
+  ];
+  return (
+    <section style={{ background:'linear-gradient(135deg,#0d1b2e,#0a0e1a)', padding:'72px 0' }}>
+      <div style={{ maxWidth:'1280px', margin:'0 auto', padding:'0 24px', display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(200px,1fr))', gap:'24px' }}>
+        {items.map(s => (
+          <div key={s.label} style={{ textAlign:'center' }}
+            onMouseOver={e=>e.currentTarget.style.transform='scale(1.06)'}
+            onMouseOut={e=>e.currentTarget.style.transform='scale(1)'}
+            className="card-hover" >
+            <div style={{ fontSize:'2.6rem', marginBottom:'10px' }}>{s.icon}</div>
+            <div className="text-gold" style={{ fontSize:'2.8rem', fontWeight:900, lineHeight:1, marginBottom:'6px' }}>
+              <Counter to={s.to} suf={s.suf} pre={s.pre} />
+            </div>
+            <div style={{ color:'#64748b', fontWeight:500, fontSize:'.9rem' }}>{s.label}</div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/* ── Property Listings ── */
+function Properties() {
+  const [tab, setTab] = useState('All');
+  const tabs = ['All', 'Residential', 'Commercial', 'Rental', 'Investment'];
+  const listings = [
+    { type:'Residential', tag:'For Sale', price:'₹1.85 Cr', title:'3 BHK Premium Apartment', loc:'Sector 62, Noida', beds:3, baths:2, sqft:'1,650', emoji:'🏠', grad:'from-blue-900 to-indigo-800' },
+    { type:'Commercial', tag:'For Lease', price:'₹68,000/mo', title:'Grade-A Office Space', loc:'BKC, Mumbai', beds:null, baths:null, sqft:'3,200', emoji:'🏢', grad:'from-slate-800 to-gray-900' },
+    { type:'Residential', tag:'For Sale', price:'₹3.40 Cr', title:'4 BHK Luxury Villa', loc:'DLF Phase 5, Gurugram', beds:4, baths:3, sqft:'4,200', emoji:'🏡', grad:'from-emerald-900 to-teal-900' },
+    { type:'Rental', tag:'For Rent', price:'₹35,000/mo', title:'2 BHK Semi-Furnished Flat', loc:'Powai, Mumbai', beds:2, baths:2, sqft:'1,050', emoji:'🏘️', grad:'from-purple-900 to-violet-900' },
+    { type:'Investment', tag:'Investment', price:'₹1.20 Cr', title:'RERA-Approved Plot', loc:'Yamuna Expressway, UP', beds:null, baths:null, sqft:'200 sqyd', emoji:'🏗️', grad:'from-amber-900 to-yellow-900' },
+    { type:'Commercial', tag:'For Sale', price:'₹95 L', title:'Retail Shop — Main Market', loc:'Connaught Place, Delhi', beds:null, baths:null, sqft:'520', emoji:'🏪', grad:'from-rose-900 to-pink-900' },
+  ];
+  const filtered = tab === 'All' ? listings : listings.filter(l => l.type === tab);
+  return (
+    <section id="properties" style={{ padding:'96px 0', background:'#fff' }}>
+      <div style={{ maxWidth:'1280px', margin:'0 auto', padding:'0 24px' }}>
+        {/* Heading */}
+        <div style={{ marginBottom:'48px' }}>
+          <span style={{ color:'#d4a017', fontWeight:600, fontSize:'.8rem', textTransform:'uppercase', letterSpacing:'.15em' }}>Curated Listings</span>
+          <h2 className="playfair" style={{ fontSize:'clamp(2rem,4vw,3rem)', fontWeight:700, color:'#0a0e1a', marginTop:'8px', marginBottom:'12px' }}>Featured <span className="text-gold">Properties</span></h2>
+          <p style={{ color:'#64748b', fontSize:'1rem', maxWidth:'520px' }}>Handpicked, verified listings across residential, commercial, and rental segments</p>
+        </div>
+        {/* Tabs */}
+        <div style={{ display:'flex', gap:'10px', flexWrap:'wrap', marginBottom:'40px' }}>
+          {tabs.map(t => (
+            <button key={t} onClick={() => setTab(t)}
+              className={t === tab ? 'tab-active' : 'tab-inactive'}
+              style={{ padding:'9px 22px', borderRadius:'8px', border:'none', cursor:'pointer', fontSize:'.88rem', transition:'all .2s' }}>
+              {t}
+            </button>
+          ))}
+        </div>
+        {/* Cards */}
+        <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(300px,1fr))', gap:'28px' }}>
+          {filtered.map(p => (
+            <div key={p.title} className="card-hover" style={{ borderRadius:'18px', overflow:'hidden', border:'1px solid #e5e7eb', background:'#fff', boxShadow:'0 2px 12px rgba(0,0,0,.06)' }}>
+              {/* Image */}
+              <div className={`bg-gradient-to-br ${p.grad}`} style={{ height:'190px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'5rem', position:'relative' }}>
+                {p.emoji}
+                <div style={{ position:'absolute', top:'14px', left:'14px', background:'linear-gradient(135deg,#d4a017,#f0c040)', color:'#0a0e1a', borderRadius:'20px', padding:'4px 14px', fontSize:'.75rem', fontWeight:700 }}>{p.tag}</div>
+              </div>
+              {/* Body */}
+              <div style={{ padding:'22px' }}>
+                <div style={{ fontSize:'1.5rem', fontWeight:900, color:'#0a0e1a', marginBottom:'4px' }}>{p.price}</div>
+                <div className="playfair" style={{ fontSize:'1.1rem', color:'#1e293b', marginBottom:'6px', fontWeight:600 }}>{p.title}</div>
+                <div style={{ color:'#64748b', fontSize:'.85rem', marginBottom:'16px' }}>📍 {p.loc}</div>
+                <div style={{ display:'flex', gap:'16px', paddingTop:'14px', borderTop:'1px solid #f1f5f9', fontSize:'.83rem', color:'#475569' }}>
+                  {p.beds && <span>🛏 {p.beds} Beds</span>}
+                  {p.baths && <span>🚿 {p.baths} Baths</span>}
+                  <span>📐 {p.sqft} {p.sqft.includes('sqyd') ? '' : 'sqft'}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div style={{ textAlign:'center', marginTop:'48px' }}>
+          <a href="#contact" style={{ display:'inline-block', border:'2px solid #d4a017', color:'#d4a017', padding:'14px 40px', borderRadius:'10px', fontWeight:700, fontSize:'1rem', textDecoration:'none', transition:'all .2s' }}
+            onMouseOver={e=>{e.currentTarget.style.background='#d4a017';e.currentTarget.style.color='#0a0e1a'}}
+            onMouseOut={e=>{e.currentTarget.style.background='transparent';e.currentTarget.style.color='#d4a017'}}>
+            View All Properties →
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── Services ── */
+function Services() {
+  const [ref, v] = useVisible(.1);
+  const svcs = [
+    { icon:'🏠', title:'Property Sales', desc:'End-to-end guidance for buying and selling residential properties — from site visits to registration.' },
+    { icon:'🔑', title:'Rental Management', desc:'Tenant sourcing, rent agreements, periodic renewals, and complete rent collection management.' },
+    { icon:'🏢', title:'Commercial Leasing', desc:'Grade-A office spaces, retail shops, warehouses and industrial properties on lease or outright sale.' },
+    { icon:'💰', title:'Investment Advisory', desc:'Data-driven property investment recommendations for HNIs looking for high-yield real estate assets.' },
+    { icon:'⚖️', title:'Legal & Documentation', desc:'Title verification, stamp duty, registration, NOC, encumbrance certificate and due-diligence.' },
+    { icon:'🏗️', title:'New Project Sales', desc:'Exclusive partnerships with top developers — pre-launch bookings, RERA-registered projects.' },
+  ];
+  return (
+    <section id="services" style={{ padding:'96px 0', background:'#f8fafc' }}>
+      <div style={{ maxWidth:'1280px', margin:'0 auto', padding:'0 24px' }}>
+        <div style={{ textAlign:'center', marginBottom:'56px' }}>
+          <span style={{ color:'#d4a017', fontWeight:600, fontSize:'.8rem', textTransform:'uppercase', letterSpacing:'.15em' }}>What We Offer</span>
+          <h2 className="playfair" style={{ fontSize:'clamp(2rem,4vw,3rem)', fontWeight:700, color:'#0a0e1a', marginTop:'8px', marginBottom:'12px' }}>Our <span className="text-gold">Services</span></h2>
+          <p style={{ color:'#64748b', maxWidth:'520px', margin:'0 auto' }}>Comprehensive real estate solutions from acquisition to exit</p>
+        </div>
+        <div ref={ref} style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(280px,1fr))', gap:'28px' }}>
+          {svcs.map((s, i) => (
+            <div key={s.title} className="card-hover" style={{
+              background:'#fff', borderRadius:'18px', padding:'34px 28px',
+              border:'1px solid #e2e8f0',
+              opacity: v ? 1 : 0, transform: v ? 'translateY(0)' : 'translateY(20px)',
+              transition: `all .6s ease ${i * .1}s`,
+              boxShadow:'0 2px 12px rgba(0,0,0,.05)',
+            }}>
+              <div className="icon-ring" style={{ marginBottom:'20px' }}>{s.icon}</div>
+              <h3 className="playfair" style={{ fontSize:'1.2rem', fontWeight:700, color:'#0a0e1a', marginBottom:'12px' }}>{s.title}</h3>
+              <p style={{ color:'#64748b', fontSize:'.92rem', lineHeight:1.7 }}>{s.desc}</p>
+              <div style={{ marginTop:'20px', color:'#d4a017', fontWeight:700, fontSize:'.85rem', cursor:'pointer' }}>Learn more →</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── Why Us ── */
+function WhyUs() {
+  const reasons = [
+    { icon:'🎯', title:'Niche Expertise', desc:'Specialists in both real estate transactions and renting — we cover the full property lifecycle.' },
+    { icon:'🔍', title:'Transparent Dealings', desc:'No hidden costs. Every transaction is fully documented with clear legal and financial disclosures.' },
+    { icon:'⚡', title:'Fast Turnaround', desc:'Our streamlined process closes deals in record time — average 21 days from enquiry to agreement.' },
+    { icon:'🤝', title:'Dedicated Advisor', desc:'Each client gets a single point of contact who stays with you from enquiry to registration.' },
+  ];
+  return (
+    <section style={{ padding:'96px 0', background:'linear-gradient(135deg,#0a0e1a,#0d1b2e)', position:'relative', overflow:'hidden' }}>
+      <div style={{ position:'absolute', inset:0, backgroundImage:'radial-gradient(rgba(212,160,23,.06) 1px,transparent 1px)', backgroundSize:'40px 40px', pointerEvents:'none' }}></div>
+      <div style={{ maxWidth:'1280px', margin:'0 auto', padding:'0 24px', position:'relative', zIndex:1 }}>
+        <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'64px', alignItems:'center' }}
+          className="grid-cols-1 md:grid-cols-2">
+          <div>
+            <span style={{ color:'#d4a017', fontWeight:600, fontSize:'.8rem', textTransform:'uppercase', letterSpacing:'.15em' }}>Why Choose Us</span>
+            <h2 className="playfair" style={{ fontSize:'clamp(2rem,4vw,3rem)', fontWeight:700, color:'#fff', marginTop:'12px', marginBottom:'16px', lineHeight:1.2 }}>
+              The <span className="text-gold-2">Forward Edge</span><br />Advantage
+            </h2>
+            <p style={{ color:'#94a3b8', lineHeight:1.8, fontSize:'1rem', marginBottom:'32px' }}>
+              Forward Edge India LLP was built on a single promise — to give every client the decisive advantage in their real estate journey. As a registered, active LLP with deep market roots, we combine local expertise with transparent practices.
+            </p>
+            <div style={{ display:'flex', flexDirection:'column', gap:'12px', marginBottom:'32px' }}>
+              {['RERA-verified, fully compliant transactions','Dedicated relationship manager per client','Legal support from title check to registration','Both residential & commercial expertise'].map(pt => (
+                <div key={pt} style={{ display:'flex', alignItems:'flex-start', gap:'12px' }}>
+                  <div style={{ width:'22px', height:'22px', borderRadius:'50%', background:'rgba(212,160,23,.15)', border:'2px solid #d4a017', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'.7rem', color:'#d4a017', flexShrink:0, marginTop:'1px' }}>✓</div>
+                  <span style={{ color:'#cbd5e1', fontSize:'.95rem' }}>{pt}</span>
+                </div>
+              ))}
+            </div>
+            <a href="#contact" style={{ display:'inline-block', background:'linear-gradient(135deg,#d4a017,#f0c040)', color:'#0a0e1a', padding:'14px 32px', borderRadius:'10px', fontWeight:700, textDecoration:'none' }}>Talk to an Expert →</a>
+          </div>
+          <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'18px' }}>
+            {reasons.map((r, i) => (
+              <div key={r.title} className="card-glass card-hover" style={{ borderRadius:'16px', padding:'28px 20px', animationDelay:`${i*.1}s` }}>
+                <div style={{ fontSize:'2rem', marginBottom:'14px' }}>{r.icon}</div>
+                <h4 style={{ color:'#f0c040', fontWeight:700, fontSize:'1rem', marginBottom:'8px' }}>{r.title}</h4>
+                <p style={{ color:'#94a3b8', fontSize:'.85rem', lineHeight:1.6 }}>{r.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── Process ── */
+function Process() {
+  const steps = [
+    { n:'01', icon:'📞', title:'Initial Consultation', desc:'Share your requirements — budget, location, timeline, purpose (buy/rent/invest).' },
+    { n:'02', icon:'🔍', title:'Property Search', desc:'We shortlist verified, RERA-compliant options that precisely match your criteria.' },
+    { n:'03', icon:'🚗', title:'Site Visits', desc:'We arrange and accompany you on site visits, answering every question along the way.' },
+    { n:'04', icon:'⚖️', title:'Legal Due Diligence', desc:'Full title verification, encumbrance check, builder credibility review, approvals audit.' },
+    { n:'05', icon:'✍️', title:'Negotiation & Closure', desc:'We negotiate the best price on your behalf and draft all legal agreements.' },
+    { n:'06', icon:'🎉', title:'Handover & Support', desc:'Key handover, registration support, and post-sale/rent services for complete peace of mind.' },
+  ];
+  return (
+    <section style={{ padding:'96px 0', background:'#fff' }}>
+      <div style={{ maxWidth:'1280px', margin:'0 auto', padding:'0 24px' }}>
+        <div style={{ textAlign:'center', marginBottom:'56px' }}>
+          <span style={{ color:'#d4a017', fontWeight:600, fontSize:'.8rem', textTransform:'uppercase', letterSpacing:'.15em' }}>Our Approach</span>
+          <h2 className="playfair" style={{ fontSize:'clamp(2rem,4vw,3rem)', fontWeight:700, color:'#0a0e1a', marginTop:'8px', marginBottom:'12px' }}>Simple <span className="text-gold">6-Step</span> Process</h2>
+          <p style={{ color:'#64748b', maxWidth:'520px', margin:'0 auto' }}>A streamlined journey from first call to keys in hand</p>
+        </div>
+        <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(280px,1fr))', gap:'24px' }}>
+          {steps.map((s, i) => (
+            <div key={s.n} className="card-hover" style={{ position:'relative', background:'#fff', border:'1px solid #e2e8f0', borderRadius:'18px', padding:'32px 24px', boxShadow:'0 2px 12px rgba(0,0,0,.05)' }}>
+              <div style={{ position:'absolute', top:'20px', right:'20px', fontFamily:'Playfair Display,serif', fontSize:'2.8rem', fontWeight:700, color:'#f0c04015', lineHeight:1 }}>{s.n}</div>
+              <div className="gold-border" style={{ paddingLeft:'14px', marginBottom:'16px' }}>
+                <div style={{ fontSize:'2rem', marginBottom:'6px' }}>{s.icon}</div>
+                <h3 style={{ fontWeight:700, color:'#0a0e1a', fontSize:'1.05rem' }}>{s.title}</h3>
+              </div>
+              <p style={{ color:'#64748b', fontSize:'.9rem', lineHeight:1.7 }}>{s.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── Testimonials ── */
+function Testimonials() {
+  const reviews = [
+    { name:'Vikram Nair', role:'IT Professional, Bangalore', stars:5, text:'Forward Edge made buying my first property completely stress-free. Their legal team caught issues that could have cost us lakhs. Exceptional service!' },
+    { name:'Sunita Agarwal', role:'NRI Investor, London', stars:5, text:'As an NRI, I was worried about managing a remote purchase. Forward Edge handled everything — from site visits (with live video) to registration. Flawless.' },
+    { name:'Rajesh Mehta', role:'Business Owner, Mumbai', stars:5, text:'Leased our commercial space through Forward Edge. They found the perfect tenant in 10 days and handled the entire agreement. Will use them again.' },
+    { name:'Priya Sharma', role:'Homemaker, Delhi NCR', stars:4, text:'Found our dream 4 BHK in Gurugram within 3 weeks. Their knowledge of the local market and builder reputation was invaluable. Very happy clients.' },
+  ];
+  return (
+    <section style={{ padding:'96px 0', background:'#f8fafc' }}>
+      <div style={{ maxWidth:'1280px', margin:'0 auto', padding:'0 24px' }}>
+        <div style={{ textAlign:'center', marginBottom:'56px' }}>
+          <span style={{ color:'#d4a017', fontWeight:600, fontSize:'.8rem', textTransform:'uppercase', letterSpacing:'.15em' }}>Client Stories</span>
+          <h2 className="playfair" style={{ fontSize:'clamp(2rem,4vw,3rem)', fontWeight:700, color:'#0a0e1a', marginTop:'8px' }}>What Clients <span className="text-gold">Say</span></h2>
+        </div>
+        <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(280px,1fr))', gap:'24px' }}>
+          {reviews.map(r => (
+            <div key={r.name} className="card-hover" style={{ background:'#fff', borderRadius:'18px', padding:'28px', border:'1px solid #e2e8f0', borderTop:'4px solid #d4a017', boxShadow:'0 2px 12px rgba(0,0,0,.05)' }}>
+              <div style={{ color:'#f59e0b', fontSize:'1.1rem', marginBottom:'14px' }}>{'★'.repeat(r.stars)}{'☆'.repeat(5-r.stars)}</div>
+              <p style={{ color:'#334155', fontStyle:'italic', lineHeight:1.75, fontSize:'.95rem', marginBottom:'20px' }}>"{r.text}"</p>
+              <div style={{ display:'flex', alignItems:'center', gap:'12px' }}>
+                <div style={{ width:'44px', height:'44px', borderRadius:'50%', background:'linear-gradient(135deg,#d4a017,#f0c040)', display:'flex', alignItems:'center', justifyContent:'center', color:'#0a0e1a', fontWeight:800, fontSize:'1.1rem' }}>{r.name[0]}</div>
+                <div>
+                  <div style={{ fontWeight:700, color:'#0a0e1a', fontSize:'.95rem' }}>{r.name}</div>
+                  <div style={{ color:'#94a3b8', fontSize:'.8rem' }}>{r.role}</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── Contact ── */
+function Contact() {
+  const [form, setForm] = useState({ name:'', email:'', phone:'', type:'Buy Property', budget:'', msg:'' });
+  const [ok, setOk] = useState(false);
+  const f = k => e => setForm(p => ({...p, [k]: e.target.value}));
+  return (
+    <section id="contact" style={{ padding:'96px 0', background:'linear-gradient(135deg,#0a0e1a,#0d1b2e)', position:'relative', overflow:'hidden' }}>
+      <div style={{ position:'absolute', inset:0, backgroundImage:'radial-gradient(rgba(212,160,23,.07) 1px,transparent 1px)', backgroundSize:'36px 36px', pointerEvents:'none' }}></div>
+      <div style={{ maxWidth:'1280px', margin:'0 auto', padding:'0 24px', position:'relative', zIndex:1 }}>
+        <div style={{ textAlign:'center', marginBottom:'56px' }}>
+          <span style={{ color:'#d4a017', fontWeight:600, fontSize:'.8rem', textTransform:'uppercase', letterSpacing:'.15em' }}>Get In Touch</span>
+          <h2 className="playfair" style={{ fontSize:'clamp(2rem,4vw,3rem)', fontWeight:700, color:'#fff', marginTop:'8px' }}>Start Your <span className="text-gold-2">Property Journey</span></h2>
+          <p style={{ color:'#94a3b8', marginTop:'12px' }}>Our advisors respond within 2 business hours</p>
+        </div>
+        <div style={{ display:'grid', gridTemplateColumns:'1fr 1.6fr', gap:'56px', alignItems:'start' }}
+          className="grid-cols-1 md:grid-cols-2">
+          {/* Info */}
+          <div>
+            {[
+              ['📍','Registered Office','Level 5, Worldmark 2, Aerocity, New Delhi – 110037'],
+              ['📞','Phone','+ 91 11 4567 2200\n+ 91 98800 66600'],
+              ['✉️','Email','info@forwardedgeindia.in\ndeals@forwardedgeindia.in'],
+              ['🌐','LLP Registration','LLPIN: AAD-9876 | GSTIN: 07AACFL1234P1Z3'],
+              ['⏰','Office Hours','Mon–Sat: 9:30 AM – 7:00 PM\nEmergency enquiries: 24/7 on WhatsApp'],
+            ].map(([ic, l, v]) => (
+              <div key={l} style={{ display:'flex', gap:'16px', marginBottom:'24px' }}>
+                <div style={{ width:'48px', height:'48px', background:'rgba(212,160,23,.1)', border:'1px solid rgba(212,160,23,.3)', borderRadius:'12px', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'1.3rem', flexShrink:0 }}>{ic}</div>
+                <div>
+                  <div style={{ color:'#d4a017', fontWeight:700, fontSize:'.9rem', marginBottom:'4px' }}>{l}</div>
+                  <div style={{ color:'#94a3b8', fontSize:'.88rem', lineHeight:1.7, whiteSpace:'pre-line' }}>{v}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+          {/* Form */}
+          <div className="card-glass" style={{ borderRadius:'22px', padding:'40px' }}>
+            {ok ? (
+              <div style={{ textAlign:'center', padding:'48px 0' }}>
+                <div style={{ fontSize:'4rem', marginBottom:'16px' }}>🏠✅</div>
+                <h3 className="playfair" style={{ color:'#fff', fontSize:'1.8rem', marginBottom:'10px' }}>Request Received!</h3>
+                <p style={{ color:'#94a3b8', marginBottom:'24px', lineHeight:1.7 }}>Our property advisor will connect with you within 2 business hours.</p>
+                <button onClick={()=>setOk(false)} style={{ background:'none', border:'1px solid rgba(212,160,23,.4)', color:'#d4a017', padding:'10px 24px', borderRadius:'8px', cursor:'pointer', fontWeight:600 }}>Submit another enquiry →</button>
+              </div>
+            ) : (
+              <form onSubmit={e=>{e.preventDefault();setOk(true)}}>
+                <h3 className="playfair" style={{ color:'#fff', fontSize:'1.5rem', marginBottom:'24px' }}>Send Enquiry</h3>
+                <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'14px', marginBottom:'14px' }}>
+                  <input required value={form.name} onChange={f('name')} placeholder="Your Full Name"
+                    style={{ background:'rgba(255,255,255,.07)', border:'1.5px solid rgba(255,255,255,.1)', borderRadius:'10px', padding:'12px 16px', color:'#fff', fontSize:'.92rem' }}/>
+                  <input required type="tel" value={form.phone} onChange={f('phone')} placeholder="Phone Number"
+                    style={{ background:'rgba(255,255,255,.07)', border:'1.5px solid rgba(255,255,255,.1)', borderRadius:'10px', padding:'12px 16px', color:'#fff', fontSize:'.92rem' }}/>
+                </div>
+                <input required type="email" value={form.email} onChange={f('email')} placeholder="Email Address"
+                  style={{ width:'100%', background:'rgba(255,255,255,.07)', border:'1.5px solid rgba(255,255,255,.1)', borderRadius:'10px', padding:'12px 16px', color:'#fff', fontSize:'.92rem', marginBottom:'14px' }}/>
+                <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'14px', marginBottom:'14px' }}>
+                  <select value={form.type} onChange={f('type')}
+                    style={{ background:'rgba(30,30,50,.9)', border:'1.5px solid rgba(255,255,255,.1)', borderRadius:'10px', padding:'12px 16px', color:'#fff', fontSize:'.92rem' }}>
+                    {['Buy Property','Sell Property','Rent a Property','Lease Commercial','Investment Advisory','Property Management'].map(o=><option key={o}>{o}</option>)}
+                  </select>
+                  <input value={form.budget} onChange={f('budget')} placeholder="Budget / Rent Range"
+                    style={{ background:'rgba(255,255,255,.07)', border:'1.5px solid rgba(255,255,255,.1)', borderRadius:'10px', padding:'12px 16px', color:'#fff', fontSize:'.92rem' }}/>
+                </div>
+                <textarea required value={form.msg} onChange={f('msg')} rows="4" placeholder="Location preference, property type, specific requirements…"
+                  style={{ width:'100%', background:'rgba(255,255,255,.07)', border:'1.5px solid rgba(255,255,255,.1)', borderRadius:'10px', padding:'12px 16px', color:'#fff', fontSize:'.92rem', resize:'vertical', marginBottom:'18px' }}/>
+                <button type="submit" style={{ width:'100%', background:'linear-gradient(135deg,#d4a017,#f0c040)', color:'#0a0e1a', border:'none', padding:'15px', borderRadius:'10px', fontWeight:800, fontSize:'1.05rem', cursor:'pointer', transition:'transform .2s, box-shadow .2s', boxShadow:'0 6px 24px rgba(212,160,23,.3)' }}
+                  onMouseOver={e=>{e.currentTarget.style.transform='scale(1.02)';e.currentTarget.style.boxShadow='0 10px 32px rgba(212,160,23,.5)'}}
+                  onMouseOut={e=>{e.currentTarget.style.transform='scale(1)';e.currentTarget.style.boxShadow='0 6px 24px rgba(212,160,23,.3)'}}>
+                  Submit Enquiry →
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── Footer ── */
+function Footer() {
+  const year = 2026;
+  return (
+    <footer style={{ background:'#06090f', borderTop:'1px solid rgba(212,160,23,.15)', padding:'64px 0 32px' }}>
+      <div style={{ maxWidth:'1280px', margin:'0 auto', padding:'0 24px' }}>
+        <div style={{ display:'grid', gridTemplateColumns:'2fr 1fr 1fr 1fr', gap:'40px', marginBottom:'48px' }}
+          className="grid-cols-1 md:grid-cols-4">
+          <div>
+            <div style={{ display:'flex', alignItems:'center', gap:'10px', marginBottom:'16px' }}>
+              <div style={{ width:'38px', height:'38px', borderRadius:'9px', background:'linear-gradient(135deg,#d4a017,#f0c040)', display:'flex', alignItems:'center', justifyContent:'center', fontWeight:900, color:'#0a0e1a', fontSize:'.85rem' }}>FE</div>
+              <div>
+                <div className="playfair" style={{ color:'#fff', fontWeight:700, fontSize:'1.1rem', lineHeight:1 }}>Forward Edge</div>
+                <div style={{ color:'#d4a017', fontSize:'.6rem', fontWeight:700, letterSpacing:'.15em' }}>INDIA LLP</div>
+              </div>
+            </div>
+            <p style={{ color:'#4b5563', fontSize:'.88rem', lineHeight:1.8, marginBottom:'16px' }}>
+              A registered, active LLP delivering premium real estate & renting solutions across India. Trusted for transparent deals and expert advisory.
+            </p>
+            <div style={{ color:'#374151', fontSize:'.78rem', lineHeight:1.7 }}>
+              <div>LLPIN: AAD-9876</div>
+              <div>GST: 07AACFL1234P1Z3</div>
+            </div>
+          </div>
+          {[
+            ['Quick Links', ['Properties','Services','About Us','Contact Us','Blog']],
+            ['Services', ['Buy Property','Sell Property','Rental Management','Commercial Leasing','Investment Advisory']],
+            ['Contact', ['📍 Aerocity, New Delhi','📞 +91 98800 66600','✉️ info@forwardedgeindia.in','⏰ Mon–Sat 9:30AM–7PM']],
+          ].map(([heading, items]) => (
+            <div key={heading}>
+              <h4 style={{ color:'#fff', fontWeight:700, marginBottom:'16px', fontSize:'.95rem' }}>{heading}</h4>
+              {items.map(it => (
+                <div key={it} style={{ color:'#4b5563', fontSize:'.85rem', marginBottom:'8px', cursor:'pointer', transition:'color .2s' }}
+                  onMouseOver={e=>e.currentTarget.style.color='#d4a017'}
+                  onMouseOut={e=>e.currentTarget.style.color='#4b5563'}>{it}</div>
+              ))}
+            </div>
+          ))}
+        </div>
+        <div style={{ borderTop:'1px solid rgba(255,255,255,.05)', paddingTop:'24px', display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap', gap:'12px' }}>
+          <p style={{ color:'#374151', fontSize:'.82rem' }}>© {year} Forward Edge India LLP. All rights reserved. | Non-Government, Active LLP | Real Estate & Renting</p>
+          <p style={{ color:'#374151', fontSize:'.78rem' }}>Disclaimer: All property details are indicative. Verify independently before transacting.</p>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+/* ── App ── */
+function App() {
+  return (
+    <>
+      <Navbar />
+      <Hero />
+      <Stats />
+      <Properties />
+      <Services />
+      <WhyUs />
+      <Process />
+      <Testimonials />
+      <Contact />
+      <Footer />
+    </>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+</script>
+</body>
+</html>
