@@ -32,10 +32,16 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#0A1628]/95 backdrop-blur-md shadow-lg shadow-black/20"
+          ? "bg-[#14213D]/95 backdrop-blur-md shadow-lg shadow-black/20"
           : "bg-transparent"
       }`}
     >
+      {/* Tricolor top bar */}
+      <div className="flex h-1">
+        <div className="flex-1 bg-[#FF8C00]" />
+        <div className="flex-1 bg-white/80" />
+        <div className="flex-1 bg-[#1A6B3C]" />
+      </div>
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
@@ -44,7 +50,7 @@ export default function Navbar() {
             className="flex items-center gap-3 group"
             aria-label="Forward Edge India home"
           >
-            <div className="w-9 h-9 rounded-sm bg-[#C9952A] flex items-center justify-center flex-shrink-0">
+            <div className="w-9 h-9 rounded-sm bg-[#FF8C00] flex items-center justify-center flex-shrink-0">
               <svg
                 viewBox="0 0 36 36"
                 fill="none"
@@ -53,24 +59,24 @@ export default function Navbar() {
               >
                 <path
                   d="M6 28 L18 8 L30 28"
-                  stroke="#0A1628"
+                  stroke="#14213D"
                   strokeWidth="3.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
                 <path
                   d="M11 21 L25 21"
-                  stroke="#0A1628"
+                  stroke="#14213D"
                   strokeWidth="3"
                   strokeLinecap="round"
                 />
               </svg>
             </div>
             <div className="flex flex-col leading-tight">
-              <span className="text-white font-bold text-base tracking-wide group-hover:text-[#C9952A] transition-colors">
+              <span className="text-white font-bold text-base tracking-wide group-hover:text-[#FF8C00] transition-colors">
                 Forward Edge
               </span>
-              <span className="text-[#C9952A] font-semibold text-xs tracking-widest uppercase">
+              <span className="text-[#FF8C00] font-semibold text-xs tracking-widest uppercase">
                 India
               </span>
             </div>
@@ -82,15 +88,15 @@ export default function Navbar() {
               <button
                 key={link.label}
                 onClick={() => handleNavClick(link.href)}
-                className="text-slate-300 hover:text-[#C9952A] px-4 py-2 text-sm font-medium tracking-wide transition-colors duration-200 relative group"
+                className="text-slate-300 hover:text-[#FF8C00] px-4 py-2 text-sm font-medium tracking-wide transition-colors duration-200 relative group"
               >
                 {link.label}
-                <span className="absolute bottom-1 left-4 right-4 h-0.5 bg-[#C9952A] scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left rounded-full" />
+                <span className="absolute bottom-1 left-4 right-4 h-0.5 bg-[#FF8C00] scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left rounded-full" />
               </button>
             ))}
             <button
               onClick={() => handleNavClick("#contact")}
-              className="ml-4 bg-[#C9952A] hover:bg-[#e0aa40] text-[#0A1628] font-semibold text-sm px-5 py-2.5 rounded-sm transition-colors duration-200 tracking-wide"
+              className="ml-4 bg-[#FF8C00] hover:bg-[#FFA333] text-[#14213D] font-semibold text-sm px-5 py-2.5 rounded-sm transition-colors duration-200 tracking-wide"
             >
               Get in Touch
             </button>
@@ -129,12 +135,12 @@ export default function Navbar() {
             mobileOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
           }`}
         >
-          <div className="bg-[#0A1628]/98 backdrop-blur-sm border-t border-white/10 py-4 flex flex-col gap-1">
+          <div className="bg-[#14213D]/98 backdrop-blur-sm border-t border-white/10 py-4 flex flex-col gap-1">
             {navLinks.map((link) => (
               <button
                 key={link.label}
                 onClick={() => handleNavClick(link.href)}
-                className="text-slate-300 hover:text-[#C9952A] hover:bg-white/5 px-4 py-3 text-sm font-medium text-left transition-colors tracking-wide"
+                className="text-slate-300 hover:text-[#FF8C00] hover:bg-white/5 px-4 py-3 text-sm font-medium text-left transition-colors tracking-wide"
               >
                 {link.label}
               </button>
@@ -142,7 +148,7 @@ export default function Navbar() {
             <div className="px-4 pt-2">
               <button
                 onClick={() => handleNavClick("#contact")}
-                className="w-full bg-[#C9952A] hover:bg-[#e0aa40] text-[#0A1628] font-semibold text-sm px-5 py-3 rounded-sm transition-colors tracking-wide"
+                className="w-full bg-[#FF8C00] hover:bg-[#FFA333] text-[#14213D] font-semibold text-sm px-5 py-3 rounded-sm transition-colors tracking-wide"
               >
                 Get in Touch
               </button>

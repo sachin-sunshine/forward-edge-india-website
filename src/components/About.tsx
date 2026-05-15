@@ -36,11 +36,11 @@ const values = [
 
 export default function About() {
   return (
-    <section id="about" className="py-20 md:py-28 bg-[#0A1628] relative overflow-hidden">
+    <section id="about" className="py-20 md:py-28 bg-[#14213D] relative overflow-hidden">
       {/* Subtle background pattern */}
       <div className="absolute inset-0 hero-grid-pattern opacity-50" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9952A]/40 to-transparent" />
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9952A]/40 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#FF8C00]/40 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#FF8C00]/40 to-transparent" />
 
       {/* Decorative parliament silhouette SVG — bottom right */}
       <div className="absolute bottom-0 right-0 opacity-[0.04] pointer-events-none hidden lg:block">
@@ -52,26 +52,26 @@ export default function About() {
         >
           {/* Parliament of India stylized outline */}
           {/* Main dome */}
-          <ellipse cx="200" cy="80" rx="80" ry="75" stroke="#C9952A" strokeWidth="1.5" fill="none" />
-          <ellipse cx="200" cy="88" rx="55" ry="55" stroke="#C9952A" strokeWidth="1" fill="none" />
-          <ellipse cx="200" cy="96" rx="30" ry="30" stroke="#C9952A" strokeWidth="1" fill="none" />
+          <ellipse cx="200" cy="80" rx="80" ry="75" stroke="#FF8C00" strokeWidth="1.5" fill="none" />
+          <ellipse cx="200" cy="88" rx="55" ry="55" stroke="#FF8C00" strokeWidth="1" fill="none" />
+          <ellipse cx="200" cy="96" rx="30" ry="30" stroke="#FF8C00" strokeWidth="1" fill="none" />
           {/* Spire */}
-          <line x1="200" y1="5" x2="200" y2="25" stroke="#C9952A" strokeWidth="2" strokeLinecap="round" />
-          <ellipse cx="200" cy="7" rx="4" ry="4" fill="#C9952A" />
+          <line x1="200" y1="5" x2="200" y2="25" stroke="#FF8C00" strokeWidth="2" strokeLinecap="round" />
+          <ellipse cx="200" cy="7" rx="4" ry="4" fill="#FF8C00" />
           {/* Colonnaded wings */}
-          <rect x="100" y="120" width="200" height="60" stroke="#C9952A" strokeWidth="1" fill="none" />
+          <rect x="100" y="120" width="200" height="60" stroke="#FF8C00" strokeWidth="1" fill="none" />
           {/* Columns */}
           {[115, 130, 145, 160, 175, 195, 215, 230, 245, 260, 275, 290].map((x) => (
-            <line key={x} x1={x} y1="120" x2={x} y2="180" stroke="#C9952A" strokeWidth="0.75" />
+            <line key={x} x1={x} y1="120" x2={x} y2="180" stroke="#FF8C00" strokeWidth="0.75" />
           ))}
           {/* Steps */}
-          <rect x="80" y="180" width="240" height="8" stroke="#C9952A" strokeWidth="0.75" fill="none" />
-          <rect x="60" y="188" width="280" height="8" stroke="#C9952A" strokeWidth="0.75" fill="none" />
-          <rect x="40" y="196" width="320" height="10" stroke="#C9952A" strokeWidth="0.75" fill="none" />
-          <rect x="20" y="206" width="360" height="12" stroke="#C9952A" strokeWidth="1" fill="none" />
+          <rect x="80" y="180" width="240" height="8" stroke="#FF8C00" strokeWidth="0.75" fill="none" />
+          <rect x="60" y="188" width="280" height="8" stroke="#FF8C00" strokeWidth="0.75" fill="none" />
+          <rect x="40" y="196" width="320" height="10" stroke="#FF8C00" strokeWidth="0.75" fill="none" />
+          <rect x="20" y="206" width="360" height="12" stroke="#FF8C00" strokeWidth="1" fill="none" />
           {/* Side wings */}
-          <rect x="20" y="140" width="80" height="40" stroke="#C9952A" strokeWidth="0.75" fill="none" />
-          <rect x="300" y="140" width="80" height="40" stroke="#C9952A" strokeWidth="0.75" fill="none" />
+          <rect x="20" y="140" width="80" height="40" stroke="#FF8C00" strokeWidth="0.75" fill="none" />
+          <rect x="300" y="140" width="80" height="40" stroke="#FF8C00" strokeWidth="0.75" fill="none" />
         </svg>
       </div>
 
@@ -80,8 +80,8 @@ export default function About() {
           {/* Left: Mission & Story */}
           <div>
             <div className="inline-flex items-center gap-2 mb-4">
-              <span className="h-px w-8 bg-[#C9952A]" />
-              <span className="text-[#C9952A] text-xs font-semibold tracking-[0.2em] uppercase">
+              <span className="h-px w-8 bg-[#FF8C00]" />
+              <span className="text-[#FF8C00] text-xs font-semibold tracking-[0.2em] uppercase">
                 About Us
               </span>
             </div>
@@ -110,13 +110,13 @@ export default function About() {
             </div>
 
             {/* Mission callout */}
-            <div className="mt-8 border-l-4 border-[#C9952A] pl-5 bg-white/5 py-4 pr-4 rounded-r-sm">
+            <div className="mt-8 border-l-4 border-[#FF8C00] pl-5 bg-white/5 py-4 pr-4 rounded-r-sm">
               <p className="text-white font-medium text-base italic leading-relaxed">
                 &ldquo;Our mission is to make Indian governments more capable, more accountable,
                 and more responsive to the needs of every citizen — especially those at the
                 margins.&rdquo;
               </p>
-              <p className="text-[#C9952A] text-sm mt-2 font-semibold">
+              <p className="text-[#FF8C00] text-sm mt-2 font-semibold">
                 — Priya Mehta, Founder & Managing Director
               </p>
             </div>
@@ -129,14 +129,14 @@ export default function About() {
               {values.map((value, idx) => (
                 <div
                   key={value.title}
-                  className="flex gap-4 p-5 rounded-sm border border-white/10 bg-white/5 hover:border-[#C9952A]/50 hover:bg-white/8 transition-all duration-300"
+                  className="flex gap-4 p-5 rounded-sm border border-white/10 bg-white/5 hover:border-[#FF8C00]/50 hover:bg-white/8 transition-all duration-300"
                 >
-                  <div className="flex-shrink-0 w-11 h-11 rounded-sm bg-[#C9952A]/15 border border-[#C9952A]/30 text-[#C9952A] flex items-center justify-center">
+                  <div className="flex-shrink-0 w-11 h-11 rounded-sm bg-[#FF8C00]/15 border border-[#FF8C00]/30 text-[#FF8C00] flex items-center justify-center">
                     {value.icon}
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-1.5">
-                      <span className="text-[#C9952A] text-xs font-bold">0{idx + 1}</span>
+                      <span className="text-[#FF8C00] text-xs font-bold">0{idx + 1}</span>
                       <h4 className="text-white font-bold text-base">{value.title}</h4>
                     </div>
                     <p className="text-slate-400 text-sm leading-relaxed">{value.description}</p>
@@ -156,7 +156,7 @@ export default function About() {
                   key={item.label}
                   className="text-center py-4 px-2 border border-white/10 rounded-sm bg-white/5"
                 >
-                  <div className="text-2xl font-bold text-[#C9952A]">{item.num}</div>
+                  <div className="text-2xl font-bold text-[#FF8C00]">{item.num}</div>
                   <div className="text-slate-400 text-xs mt-0.5 tracking-wide">{item.label}</div>
                 </div>
               ))}

@@ -1,12 +1,13 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-navy: #0A1628;
-  --color-navy-light: #112240;
-  --color-navy-dark: #060e1a;
-  --color-gold: #C9952A;
-  --color-gold-light: #e0aa40;
-  --color-gold-dark: #a87820;
+  --color-navy: #14213D;
+  --color-navy-light: #1E3056;
+  --color-navy-dark: #0A1428;
+  --color-saffron: #FF8C00;
+  --color-saffron-light: #FFA333;
+  --color-saffron-dark: #E06600;
+  --color-india-green: #1A6B3C;
   --font-inter: var(--font-inter);
 }
 
@@ -26,13 +27,13 @@ body {
   background: #f1f1f1;
 }
 ::-webkit-scrollbar-thumb {
-  background: #C9952A;
+  background: #FF8C00;
   border-radius: 3px;
 }
 
 .hero-grid-pattern {
   background-image:
-    linear-gradient(rgba(201, 149, 42, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(201, 149, 42, 0.07) 1px, transparent 1px);
+    linear-gradient(rgba(255, 140, 0, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 140, 0, 0.07) 1px, transparent 1px);
   background-size: 60px 60px;
 }

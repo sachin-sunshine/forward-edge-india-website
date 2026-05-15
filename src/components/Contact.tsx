@@ -36,7 +36,7 @@ export default function Contact() {
   };
 
   const inputClass =
-    "w-full bg-white border border-slate-300 text-slate-800 placeholder-slate-400 text-sm px-4 py-3 rounded-sm focus:outline-none focus:border-[#C9952A] focus:ring-1 focus:ring-[#C9952A] transition-colors";
+    "w-full bg-white border border-slate-300 text-slate-800 placeholder-slate-400 text-sm px-4 py-3 rounded-sm focus:outline-none focus:border-[#FF8C00] focus:ring-1 focus:ring-[#FF8C00] transition-colors";
 
   return (
     <section id="contact" className="py-20 md:py-28 bg-slate-50">
@@ -44,12 +44,12 @@ export default function Contact() {
         {/* Header */}
         <div className="max-w-2xl mb-14 md:mb-16">
           <div className="inline-flex items-center gap-2 mb-4">
-            <span className="h-px w-8 bg-[#C9952A]" />
-            <span className="text-[#C9952A] text-xs font-semibold tracking-[0.2em] uppercase">
+            <span className="h-px w-8 bg-[#FF8C00]" />
+            <span className="text-[#FF8C00] text-xs font-semibold tracking-[0.2em] uppercase">
               Get in Touch
             </span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0A1628] leading-tight mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#14213D] leading-tight mb-4">
             Contact Us
           </h2>
           <p className="text-slate-600 text-lg leading-relaxed">
@@ -69,14 +69,14 @@ export default function Contact() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <h3 className="text-[#0A1628] font-bold text-xl">Message Received</h3>
+                  <h3 className="text-[#14213D] font-bold text-xl">Message Received</h3>
                   <p className="text-slate-500 text-sm max-w-xs leading-relaxed">
                     Thank you for reaching out. A member of our team will respond within 2 business
                     days.
                   </p>
                   <button
                     onClick={() => setSubmitState("idle")}
-                    className="mt-2 text-[#C9952A] text-sm font-semibold hover:underline underline-offset-4"
+                    className="mt-2 text-[#FF8C00] text-sm font-semibold hover:underline underline-offset-4"
                   >
                     Send another message
                   </button>
@@ -89,7 +89,7 @@ export default function Contact() {
                         htmlFor="name"
                         className="block text-xs font-semibold text-slate-700 mb-1.5 uppercase tracking-wide"
                       >
-                        Full Name <span className="text-[#C9952A]">*</span>
+                        Full Name <span className="text-[#FF8C00]">*</span>
                       </label>
                       <input
                         id="name"
@@ -107,7 +107,7 @@ export default function Contact() {
                         htmlFor="email"
                         className="block text-xs font-semibold text-slate-700 mb-1.5 uppercase tracking-wide"
                       >
-                        Email Address <span className="text-[#C9952A]">*</span>
+                        Email Address <span className="text-[#FF8C00]">*</span>
                       </label>
                       <input
                         id="email"
@@ -145,7 +145,7 @@ export default function Contact() {
                       htmlFor="message"
                       className="block text-xs font-semibold text-slate-700 mb-1.5 uppercase tracking-wide"
                     >
-                      Message <span className="text-[#C9952A]">*</span>
+                      Message <span className="text-[#FF8C00]">*</span>
                     </label>
                     <textarea
                       id="message"
@@ -162,7 +162,7 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={submitState === "submitting"}
-                    className="w-full sm:w-auto bg-[#0A1628] hover:bg-[#112240] disabled:bg-slate-400 text-white font-semibold text-sm px-8 py-3.5 rounded-sm transition-colors duration-200 tracking-wide inline-flex items-center justify-center gap-2"
+                    className="w-full sm:w-auto bg-[#14213D] hover:bg-[#1E3056] disabled:bg-slate-400 text-white font-semibold text-sm px-8 py-3.5 rounded-sm transition-colors duration-200 tracking-wide inline-flex items-center justify-center gap-2"
                   >
                     {submitState === "submitting" ? (
                       <>
@@ -195,12 +195,12 @@ export default function Contact() {
           {/* Info panel — takes 2 of 5 cols */}
           <div className="lg:col-span-2 space-y-6">
             {/* Office address */}
-            <div className="bg-[#0A1628] text-white rounded-sm p-6">
-              <h3 className="text-[#C9952A] text-xs font-bold uppercase tracking-widest mb-4">
+            <div className="bg-[#14213D] text-white rounded-sm p-6">
+              <h3 className="text-[#FF8C00] text-xs font-bold uppercase tracking-widest mb-4">
                 New Delhi Office
               </h3>
               <div className="flex gap-3 mb-4">
-                <svg className="w-5 h-5 text-[#C9952A] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-[#FF8C00] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
                     d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
@@ -214,25 +214,25 @@ export default function Contact() {
                 </address>
               </div>
               <div className="flex gap-3 mb-3">
-                <svg className="w-5 h-5 text-[#C9952A] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-[#FF8C00] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
                     d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
                 <a
                   href="mailto:contact@forwardedgeindia.com"
-                  className="text-slate-300 text-sm hover:text-[#C9952A] transition-colors"
+                  className="text-slate-300 text-sm hover:text-[#FF8C00] transition-colors"
                 >
                   contact@forwardedgeindia.com
                 </a>
               </div>
               <div className="flex gap-3">
-                <svg className="w-5 h-5 text-[#C9952A] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-[#FF8C00] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
                     d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
                 <a
                   href="tel:+911123414000"
-                  className="text-slate-300 text-sm hover:text-[#C9952A] transition-colors"
+                  className="text-slate-300 text-sm hover:text-[#FF8C00] transition-colors"
                 >
                   +91 11 2341 4000
                 </a>
@@ -243,7 +243,7 @@ export default function Contact() {
             <div className="border border-slate-200 bg-white rounded-sm p-5">
               <div className="flex items-center gap-2.5 mb-2">
                 <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span className="text-[#0A1628] font-semibold text-sm">We typically respond within 2 business days</span>
+                <span className="text-[#14213D] font-semibold text-sm">We typically respond within 2 business days</span>
               </div>
               <p className="text-slate-500 text-xs leading-relaxed">
                 For urgent government or multilateral engagement enquiries, please mention &ldquo;URGENT&rdquo;
@@ -253,7 +253,7 @@ export default function Contact() {
 
             {/* Regions served */}
             <div className="border border-slate-200 bg-white rounded-sm p-5">
-              <h4 className="text-[#0A1628] font-bold text-xs uppercase tracking-wider mb-3">
+              <h4 className="text-[#14213D] font-bold text-xs uppercase tracking-wider mb-3">
                 Regions We Serve
               </h4>
               <div className="flex flex-wrap gap-2">

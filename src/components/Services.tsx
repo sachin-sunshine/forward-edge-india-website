@@ -80,12 +80,12 @@ export default function Services() {
         {/* Section header */}
         <div className="max-w-2xl mb-14 md:mb-16">
           <div className="inline-flex items-center gap-2 mb-4">
-            <span className="h-px w-8 bg-[#C9952A]" />
-            <span className="text-[#C9952A] text-xs font-semibold tracking-[0.2em] uppercase">
+            <span className="h-px w-8 bg-[#FF8C00]" />
+            <span className="text-[#FF8C00] text-xs font-semibold tracking-[0.2em] uppercase">
               What We Do
             </span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0A1628] leading-tight mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#14213D] leading-tight mb-4">
             Our Services
           </h2>
           <p className="text-slate-600 text-lg leading-relaxed">
@@ -99,20 +99,20 @@ export default function Services() {
           {services.map((service, idx) => (
             <div
               key={service.title}
-              className="group relative bg-slate-50 border border-slate-200 rounded-sm p-6 md:p-7 hover:border-[#C9952A] hover:shadow-lg hover:shadow-[#C9952A]/10 hover:-translate-y-1 transition-all duration-300"
+              className="group relative bg-slate-50 border border-slate-200 rounded-sm p-6 md:p-7 hover:border-[#FF8C00] hover:shadow-lg hover:shadow-[#FF8C00]/10 hover:-translate-y-1 transition-all duration-300"
             >
               {/* Number */}
-              <span className="absolute top-5 right-6 text-4xl font-bold text-slate-100 group-hover:text-[#C9952A]/10 transition-colors select-none">
+              <span className="absolute top-5 right-6 text-4xl font-bold text-slate-100 group-hover:text-[#FF8C00]/10 transition-colors select-none">
                 {String(idx + 1).padStart(2, "0")}
               </span>
 
               {/* Icon */}
-              <div className="w-12 h-12 rounded-sm bg-[#0A1628] text-[#C9952A] flex items-center justify-center mb-5 group-hover:bg-[#C9952A] group-hover:text-[#0A1628] transition-colors duration-300">
+              <div className="w-12 h-12 rounded-sm bg-[#14213D] text-[#FF8C00] flex items-center justify-center mb-5 group-hover:bg-[#FF8C00] group-hover:text-[#14213D] transition-colors duration-300">
                 {service.icon}
               </div>
 
               {/* Content */}
-              <h3 className="text-lg font-bold text-[#0A1628] mb-3 leading-tight">
+              <h3 className="text-lg font-bold text-[#14213D] mb-3 leading-tight">
                 {service.title}
               </h3>
               <p className="text-slate-600 text-sm leading-relaxed mb-5">
@@ -124,7 +124,7 @@ export default function Services() {
                 {service.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="text-xs font-medium text-slate-500 bg-white border border-slate-200 px-2.5 py-1 rounded-sm group-hover:border-[#C9952A]/30 group-hover:text-[#C9952A] transition-colors"
+                    className="text-xs font-medium text-slate-500 bg-white border border-slate-200 px-2.5 py-1 rounded-sm group-hover:border-[#FF8C00]/30 group-hover:text-[#FF8C00] transition-colors"
                   >
                     {tag}
                   </span>
@@ -141,7 +141,7 @@ export default function Services() {
           </p>
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 text-[#C9952A] font-semibold text-sm hover:underline underline-offset-4"
+            className="inline-flex items-center gap-2 text-[#FF8C00] font-semibold text-sm hover:underline underline-offset-4"
           >
             Talk to our team
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
